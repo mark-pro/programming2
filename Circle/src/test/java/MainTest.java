@@ -11,24 +11,30 @@ import org.junit.*;
  * @version 1.0.0
  */
 public class MainTest {
-    Circle TestCircle = new Circle(5);
+    
+    Circle TestCircle;
+
+    public MainTest() {
+        this.TestCircle = new Circle(5);
+    }
+    
     @Test
     public void radiusTest() {
-        assertEquals(TestCircle.getRadius(), 5, 0);
+        assertEquals(this.TestCircle.getRadius(), 5, 0);
     }
 
     @Test
     public void diameterTest() {
-        assertEquals(TestCircle.getDiameter(), 10, 0);
+        assertEquals(this.TestCircle.getDiameter(), 10, 0);
     }
 
     @Test
     public void circumferenceTest() {
-        assertEquals(TestCircle.getCircumference(), 31.4159, 0.0001);                
+        assertEquals(this.TestCircle.getCircumference(), 31.4159, 0.0001);                
     }
 
     @Test
     public void areaTest() {
-        assertEquals(TestCircle.getArea(), 78.5398, 0.0001);
+        assertEquals(this.TestCircle.getArea(), 78.5398, 0.0001);
     }
 }
