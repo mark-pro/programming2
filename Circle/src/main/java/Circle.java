@@ -1,6 +1,6 @@
 public class Circle {
     
-    //. Variables
+    //. Properties
     private double Radius;
     private double Diameter;
     private double Circumference;
