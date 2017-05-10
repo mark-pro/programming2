@@ -9,32 +9,34 @@ public class Circle {
     //. Constructors
     public Circle(double radius) {
         this.Radius = radius;
-        this.calculateDiameter()
-            .calculateCircumference()
-            .calculateArea();
+        this.setDiameter()
+            .setCircumference()
+            .setArea();
     }
 
-    //. Calculation Methods
-    public Circle calculateDiameter() {
+    //. Getters
+    public double getRadius() { return this.Radius; }
+    
+    public double getDiameter() { return this.Diameter; }
+    
+    private Circle setDiameter() {
         this.Diameter = 2 * this.Radius;
         return this;
     }
-
-    public Circle calculateCircumference() {
+    
+    public double getCircumference() { return this.Circumference; }
+    
+    private Circle setCircumference() {
         this.Circumference = 2 * Math.PI * this.Radius;
         return this;
     }
-
-    public Circle calculateArea() {
+    
+    public double getArea() { return this.Area; }
+    
+    private Circle setArea() {
         this.Area = Math.PI * Math.pow(this.Radius, 2);
         return this;
     }
-
-    //. Getters and setters
-    public double getRadius() { return this.Radius; }
-    public double getDiameter() { return this.Diameter; }
-    public double getCircumference() { return this.Circumference; }
-    public double getArea() { return this.Area; }
 
     @Override
     public String toString() {
