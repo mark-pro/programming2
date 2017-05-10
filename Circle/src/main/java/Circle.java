@@ -44,7 +44,6 @@ public class Circle {
         "\tdiameter: " + this.Diameter + "\n" +
         "\tcircumference: " + this.Circumference + "\n" +
         "\tarea: " + this.Area + "\n" +
-        "}"
-        ;
+        "}";
     }
 }
