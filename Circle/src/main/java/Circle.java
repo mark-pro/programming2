@@ -26,7 +26,7 @@ public class Circle {
     }
 
     public Circle calculateArea() {
-        this.Area = Math.PI * (this.Radius * this.Radius);
+        this.Area = Math.PI * Math.pow(this.Radius, 2);
         return this;
     }
 
