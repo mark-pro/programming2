@@ -12,11 +12,7 @@ import org.junit.*;
  */
 public class MainTest {
     
-    Circle TestCircle;
-
-    public MainTest() {
-        this.TestCircle = new Circle(5);
-    }
+    Circle TestCircle = new Circle(5);
     
     @Test
     public void radiusTest() {
