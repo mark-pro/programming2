@@ -1,6 +1,6 @@
 # Circle
 
-Circle Model and Model factory program to demonstrait simple Model/Model Factory pattern
+Self contained circle object.
 
 ## Requirements
 

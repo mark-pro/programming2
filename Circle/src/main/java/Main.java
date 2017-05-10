@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args) {
-        Circle c = CircleFactory.createCircle(proptRadius());
+        Circle c = new Circle(proptRadius());
         System.out.println(c);
     }
 
