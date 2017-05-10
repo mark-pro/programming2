@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 /**
  * Copyright (C) 2017 Mark Pro.
  */
@@ -18,8 +16,9 @@ public class Main {
     }
 
     public static double proptRadius() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter a radius for a circle: ");
-        return input.nextDouble();
+        try(Scanner input = new Scanner(System.in)) {
+            System.out.print("Enter a radius for a circle: ");
+            return input.nextDouble();
+        }
     }
 }
