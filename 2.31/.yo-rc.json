@@ -1,0 +1,9 @@
+{
+  "generator-java": {
+    "title": "TableOfSquaresAndCubes",
+    "description": "Squaring and cubing numbers",
+    "author": "Mark Pro",
+    "email": "mark.pro@stratiscube.com",
+    "namespace": ""
+  }
+}
