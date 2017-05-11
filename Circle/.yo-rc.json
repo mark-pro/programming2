@@ -1,7 +1,7 @@
 {
   "generator-java": {
     "title": "Circle",
-    "description": "Self contained circle object.",
+    "description": "Self-contained circle object with a model factory to boot.",
     "author": "Mark Pro",
     "email": "mark.pro@stratuscube.com",
     "namespace": ""
