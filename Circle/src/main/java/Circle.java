@@ -1,9 +1,5 @@
 public class Circle {
     
-    public static enum CircleProperties {
-        Radius, Diameter, Circumference, Area
-    }
-
     //. Properties
     private double Radius;
     private double Diameter;
