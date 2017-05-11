@@ -1,4 +1,4 @@
-# TableOfSquaresAndCubes
+# Table Of Squares And Cubes
 
 Squaring and cubing numbers
 
