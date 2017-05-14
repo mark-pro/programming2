@@ -9,7 +9,7 @@
  */
 public class Main {
     public static void main(String... args) {
-        HealthProfile profile = HealthProfileCreator.createProfileFromInput();
+        HealthProfile profile = HealthProfileFactory.createProfileFromInput();
         System.out.println(profile);
     }
 }
