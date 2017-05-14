@@ -1,0 +1,9 @@
+{
+  "generator-java": {
+    "title": "HealthProfile",
+    "description": "Computerizing health records",
+    "author": "Mark Pro",
+    "email": "mark.pro@stratuscube.com",
+    "namespace": ""
+  }
+}
