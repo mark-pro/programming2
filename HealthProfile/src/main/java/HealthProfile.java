@@ -126,8 +126,8 @@ class HealthProfile {
             this.getBodyMassIndexSummary() +
         "\nMax Heart Rate: " + this.getMaxHeartRate() +
         "\nTarget Heart Rate: [" + 
-            this.getTargetHeartRate().getLow() + "] - [" +
-            this.getTargetHeartRate().getHigh() + "]"; 
+            this.getTargetHeartRate().getLow() + " - " +
+            this.getTargetHeartRate().getHigh(); 
             
     }
 }
