@@ -125,7 +125,7 @@ class HealthProfile {
             String.format("%.2f", this.getBodyMassIndex()) + " - " + 
             this.getBodyMassIndexSummary() +
         "\nMax Heart Rate: " + this.getMaxHeartRate() +
-        "\nTarget Heart Rate: [" + 
+        "\nTarget Heart Rate: " + 
             this.getTargetHeartRate().getLow() + " - " +
             this.getTargetHeartRate().getHigh(); 
             

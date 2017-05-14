@@ -20,6 +20,9 @@ Overweight: 25 < BMI < 29.9
 
 Obese: BMI >= 30
 
+## Output
+![output](output.PNG)
+
 ## Requirements
 
 - [Java SE](http://www.oracle.com/technetwork/java/javase/overview)
