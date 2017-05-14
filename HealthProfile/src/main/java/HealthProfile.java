@@ -14,25 +14,20 @@ class HealthProfile {
     public HealthProfile(
         String fullName, char gender,
         LocalDate dateOfBirth, int height, int weight) {
-            String[] names = fullName.split(",");
             
-            this.firstName = names[0].trim();
-            this.lastName = names[1].trim();
-            this.gender = gender;
-            this.dateOfBirth = dateOfBirth;
-            this.height = height;
-            this.weight = weight;
+            String[] names = fullName.split(",");
+            this.initialize(
+                names[0].trim(), names[1].trim(), 
+                gender, dateOfBirth, height, weight
+            );
     }
     public HealthProfile(
-        String firstName, String lastName, char gender ,
+        String firstName, String lastName, char gender,
         LocalDate dateOfBirth, int height, int weight) {
-        
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.gender = gender;
-            this.dateOfBirth = dateOfBirth;
-            this.height = height;
-            this.weight = weight;
+            
+            this.initialize(firstName, lastName, gender, 
+                dateOfBirth, height, weight
+            );
     }
 
     //. Getters
@@ -84,6 +79,16 @@ class HealthProfile {
     }
 
     //. Helper methods
+    private void initialize(
+        String firstName, String lastName, char gender,
+        LocalDate dateOfBirth, int height, int weight) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            this.height = height;
+            this.weight = weight;
+    }
     public String getFullName() {
         return this.lastName + ", " + this.firstName;
     }
