@@ -11,7 +11,6 @@ class HealthProfile {
     //. A persons weight in pounds
     private int weight;
 
-
     public HealthProfile(
         String fullName , char gender ,
         LocalDate dateOfBirth , int height, int weight) {

@@ -1,27 +1,28 @@
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 class HealthProfileFactory {
     public static HealthProfile createProfileFromInput() {
         try(Scanner in = new Scanner(System.in)) {
-            System.out.println("Enter in the patient's full name in (Doe, John)");
-            System.out.print("-> ");
-            String fullName = in.nextLine();
+
+            String fullName = 
+                prompt("Enter in the patient's full name ex: Doe, John" ,
+                () -> in.nextLine());
             
-            System.out.println("Enter in the patient's gender");
-            System.out.print("-> ");
-            char gender = in.nextLine().charAt(0);
+            
+            char gender = prompt("Enter in the patient's gender" , 
+                () -> in.nextLine().charAt(0));
 
-            System.out.println("Enter in the patients date of birth (mm/dd/yyyy)");
-            System.out.print("-> "); 
-            String dob = in.nextLine();
+            String dob = prompt("Enter in the patients date of birth ex: mm/dd/yyyy",
+                () -> in.nextLine());
 
-            System.out.println("Enter in the patient's height");
-            System.out.print("-> " );
-            int height = in.nextInt();
+            int height = prompt("Enter in the patient's height", 
+                () -> in.nextInt());
 
-            System.out.println("Enter in the patient's wight");
-            System.out.print("-> " );
-            int weight = in.nextInt();
+            int weight = prompt("Enter in the patient's wight",
+                () -> in.nextInt());
 
             String[] numbers = dob.split("/");
             int month = Integer.parseInt(numbers[0]);
@@ -32,4 +33,11 @@ class HealthProfileFactory {
                 fullName, gender, LocalDate.of(year, month, day), height, weight);
         }
     }
+
+     public static <T> T prompt(String message, Supplier<T> func) {
+            System.out.println(message);
+            System.out.print("-> " );
+            T result = func.get();
+            return result;
+        }
 }
