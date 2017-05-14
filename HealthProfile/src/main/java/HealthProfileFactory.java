@@ -39,7 +39,7 @@ class HealthProfileFactory {
 
      public static <T> T prompt(String message, Supplier<T> func) {
         System.out.println(message);
-        System.out.print("-> " );
+        System.out.print("{~}> " );
         T result = func.get();
         return result;
     }
