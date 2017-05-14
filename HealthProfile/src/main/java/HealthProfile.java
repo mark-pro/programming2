@@ -16,8 +16,8 @@ class HealthProfile {
         String fullName , char gender ,
         LocalDate dateOfBirth , int height, int weight) {
         String[] names = fullName.split(",");
-        this.firstName = names[0];
-        this.lastName = names[1];
+        this.firstName = names[0].trim();
+        this.lastName = names[1].trim();
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.height = height;
@@ -116,13 +116,13 @@ class HealthProfile {
         return "Name: " + this.getFullName() +
         "\nAge: " + this.getAge() +
         "\nDate of Birth: " + 
-            this.dateOfBirth.getMonth() + "/" + 
+            this.dateOfBirth.getMonthValue() + "/" + 
             this.dateOfBirth.getDayOfMonth() + "/" + 
             this.dateOfBirth.getYear() +
-        "\nHeight: " + this.height +
-        "\nWeight: " + this.weight +
+        "\nHeight: " + this.height + "'" +
+        "\nWeight: " + this.weight + " lbs" +
         "\nBody Mass Index: " + 
-            this.getBodyMassIndex() + " - " + 
+            String.format("%.2f", this.getBodyMassIndex()) + " - " + 
             this.getBodyMassIndexSummary() +
         "\nMax Heart Rate: " + this.getMaxHeartRate() +
         "\nTarget Heart Rate: [" + 

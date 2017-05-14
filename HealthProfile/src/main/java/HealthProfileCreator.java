@@ -7,20 +7,20 @@ class HealthProfileCreator {
             System.out.print("-> ");
             String fullName = in.nextLine();
             
-            System.out.println("Enter in the patient's gender'");
+            System.out.println("Enter in the patient's gender");
             System.out.print("-> ");
-            char gender = in.next().charAt(0);
-            
+            char gender = in.nextLine().charAt(0);
+
             System.out.println("Enter in the patients date of birth (mm/dd/yyyy)");
             System.out.print("-> "); 
             String dob = in.nextLine();
 
             System.out.println("Enter in the patient's height");
-            System.out.print("->" );
+            System.out.print("-> " );
             int height = in.nextInt();
 
             System.out.println("Enter in the patient's wight");
-            System.out.print("->" );
+            System.out.print("-> " );
             int weight = in.nextInt();
 
             String[] numbers = dob.split("/");
