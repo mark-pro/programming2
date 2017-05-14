@@ -28,8 +28,7 @@ class HealthProfileFactory {
             int weight = 
                 prompt("Enter in the patient's wight",
                     () -> in.nextInt());
-            return new HealthProfile(
-                fullName, gender, dob, height, weight);
+            return new HealthProfile(fullName, gender, dob, height, weight);
         }
         catch(Exception e) {
             System.out.println("Something was not input correctly");
