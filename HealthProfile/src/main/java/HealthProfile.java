@@ -11,6 +11,18 @@ class HealthProfile {
     //. A persons weight in pounds
     private int weight;
 
+
+    public HealthProfile(
+        String fullName , char gender ,
+        LocalDate dateOfBirth , int height, int weight) {
+        String[] names = fullName.split(",");
+        this.firstName = names[0];
+        this.lastName = names[1];
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.height = height;
+        this.weight = weight;
+    }
     public HealthProfile(
         String firstName , String lastName , char gender ,
         LocalDate dateOfBirth , int height, int weight) {
@@ -33,7 +45,6 @@ class HealthProfile {
     public char getGender() {
         return this.gender;
     }
-
     public LocalDate getDateOfBirth() {
         return this.dateOfBirth;
     }
@@ -73,6 +84,9 @@ class HealthProfile {
     }
 
     //. Helper methods
+    public String getFullName() {
+        return this.lastName + ", " + this.firstName;
+    }
     public int getAge() {
         return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
     }
@@ -86,5 +100,34 @@ class HealthProfile {
     }
     public double getBodyMassIndex() {
         return (this.weight * 703)/Math.pow(this.height, 2);
+    }
+    public String getBodyMassIndexSummary() {
+        double bmi = this.getBodyMassIndex();
+        return 
+            bmi < 18.5 ? "Underweight" :
+            bmi < 25 ? "Normal" :
+            bmi < 30 ? "Overweight" :
+            "Obese";
+    }
+
+    //. Overrides
+    @Override
+    public String toString() {
+        return "Name: " + this.getFullName() +
+        "\nAge: " + this.getAge() +
+        "\nDate of Birth: " + 
+            this.dateOfBirth.getMonth() + "/" + 
+            this.dateOfBirth.getDayOfMonth() + "/" + 
+            this.dateOfBirth.getYear() +
+        "\nHeight: " + this.height +
+        "\nWeight: " + this.weight +
+        "\nBody Mass Index: " + 
+            this.getBodyMassIndex() + " - " + 
+            this.getBodyMassIndexSummary() +
+        "\nMax Heart Rate: " + this.getMaxHeartRate() +
+        "\nTarget Heart Rate: [" + 
+            this.getTargetHeartRate().getLow() + "] - [" +
+            this.getTargetHeartRate().getHigh() + "]"; 
+            
     }
 }
