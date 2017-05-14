@@ -98,7 +98,7 @@ class HealthProfile {
         return new Range(low , high);
     }
     public double getBodyMassIndex() {
-        return (this.weight * 703)/Math.pow(this.height, 2);
+        return (this.weight * 703) / Math.pow(this.height, 2);
     }
     public String getBodyMassIndexSummary() {
         double bmi = this.getBodyMassIndex();
