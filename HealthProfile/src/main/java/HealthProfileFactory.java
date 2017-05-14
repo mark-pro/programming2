@@ -3,26 +3,32 @@ import java.util.Scanner;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+
+import org.codehaus.groovy.ast.stmt.CatchStatement;
 class HealthProfileFactory {
     public static HealthProfile createProfileFromInput() {
         try(Scanner in = new Scanner(System.in)) {
 
             String fullName = 
                 prompt("Enter in the patient's full name ex: Doe, John" ,
-                () -> in.nextLine());
+                    () -> in.nextLine());
             
             
-            char gender = prompt("Enter in the patient's gender" , 
-                () -> in.nextLine().charAt(0));
+            char gender = 
+                prompt("Enter in the patient's gender" , 
+                    () -> in.nextLine().charAt(0));
 
-            String dob = prompt("Enter in the patients date of birth ex: mm/dd/yyyy",
-                () -> in.nextLine());
+            String dob = 
+                prompt("Enter in the patients date of birth ex: mm/dd/yyyy",
+                    () -> in.nextLine());
 
-            int height = prompt("Enter in the patient's height", 
-                () -> in.nextInt());
+            int height = 
+                prompt("Enter in the patient's height", 
+                    () -> in.nextInt());
 
-            int weight = prompt("Enter in the patient's wight",
-                () -> in.nextInt());
+            int weight = 
+                prompt("Enter in the patient's wight",
+                    () -> in.nextInt());
 
             String[] numbers = dob.split("/");
             int month = Integer.parseInt(numbers[0]);
@@ -31,6 +37,10 @@ class HealthProfileFactory {
 
             return new HealthProfile(
                 fullName, gender, LocalDate.of(year, month, day), height, weight);
+        }
+        catch(Exception e) {
+            System.out.println("Something was not input correctly");
+            return null;
         }
     }
 
