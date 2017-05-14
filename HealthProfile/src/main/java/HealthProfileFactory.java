@@ -16,8 +16,8 @@ class HealthProfileFactory {
             LocalDate dob = 
                 prompt("Enter in the patients date of birth ex: mm/dd/yyyy",
                     () -> LocalDate.parse(in.nextLine(), 
-                          DateTimeFormatter.ofPattern("M/dd/yyyy"
-                          , Locale.US)));
+                          DateTimeFormatter.ofPattern("M/dd/yyyy", Locale.US))
+                );
             int height = 
                 prompt("Enter in the patient's height", 
                     () -> in.nextInt());
