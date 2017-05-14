@@ -22,3 +22,9 @@ dependencies {
 }
 
 mainClassName = "Main"
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
