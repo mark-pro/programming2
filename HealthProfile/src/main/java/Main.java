@@ -14,9 +14,8 @@ public class Main {
 
     private static void run() {
         HealthProfile profile;
-        do {
-            profile = HealthProfileFactory.createProfileFromInput();
-        } while(profile == null);
+        do profile = HealthProfileFactory.createProfileFromInput(); 
+        while(profile == null);
         System.out.println("//---------------------//");
         System.out.println(profile);
     }
