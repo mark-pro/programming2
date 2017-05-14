@@ -7,24 +7,20 @@ import java.util.function.Supplier;
 class HealthProfileFactory {
     public static HealthProfile createProfileFromInput() {
         try(Scanner in = new Scanner(System.in)) {
-
             String fullName = 
                 prompt("Enter in the patient's full name ex: Doe, John" ,
                     () -> in.nextLine());
-            
             char gender = 
                 prompt("Enter in the patient's gender" , 
                     () -> in.nextLine().charAt(0));
-
             LocalDate dob = 
                 prompt("Enter in the patients date of birth ex: mm/dd/yyyy",
                     () -> LocalDate.parse(in.nextLine(), 
-                          DateTimeFormatter.ofPattern("M/dd/yyyy" , Locale.US)));
-
+                          DateTimeFormatter.ofPattern("M/dd/yyyy"
+                          , Locale.US)));
             int height = 
                 prompt("Enter in the patient's height", 
                     () -> in.nextInt());
-
             int weight = 
                 prompt("Enter in the patient's wight",
                     () -> in.nextInt());
