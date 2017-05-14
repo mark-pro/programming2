@@ -118,7 +118,7 @@ class HealthProfile {
             this.dateOfBirth.getMonthValue() + "/" + 
             this.dateOfBirth.getDayOfMonth() + "/" + 
             this.dateOfBirth.getYear() +
-        "\nHeight: " + this.height + "'" +
+        "\nHeight: " + this.height + "\"" +
         "\nWeight: " + this.weight + " lbs" +
         "\nBody Mass Index: " + 
             String.format("%.2f", this.getBodyMassIndex()) + " - " + 
