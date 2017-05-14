@@ -127,6 +127,5 @@ class HealthProfile {
         "\nTarget Heart Rate: " + 
             this.getTargetHeartRate().getLow() + " - " +
             this.getTargetHeartRate().getHigh(); 
-            
     }
 }
