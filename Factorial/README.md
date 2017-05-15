@@ -1,5 +1,7 @@
 # Factorial
 
+Calculate n factorial (n!).
+
 ## Requirements
 
 - [Java SE](http://www.oracle.com/technetwork/java/javase/overview)

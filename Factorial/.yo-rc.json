@@ -1,7 +1,7 @@
 {
   "generator-java": {
     "title": "Factorial",
-    "description": "",
+    "description": "Calculate a factorial.",
     "author": "Mark Pro",
     "email": "mark.pro@stratuscube.com",
     "namespace": ""
