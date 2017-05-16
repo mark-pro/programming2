@@ -13,12 +13,12 @@ public class Main {
     public static void main(String... args) {
         try(Scanner in = new Scanner(System.in)) {
             System.out.print("Enter in a number greater than 0\n{~}> ");
-            int n = in.nextInt();
+            short n = in.nextShort();
             long result = calculateFactorial(n);
             System.out.println(n + "! = " + result);
         }
     }
-    public static long calculateFactorial(int n) {
-        long i; for(i = 1; n > 0 ; i *= n--); return i;
+    public static long calculateFactorial(short n) {
+        long i = 1; for(; n > 0 ; i *= n--); return i;
     }
 }
