@@ -1,0 +1,9 @@
+{
+  "generator-java": {
+    "title": "Fib",
+    "description": "Calculating the fibonacci series",
+    "author": "Mark Pro",
+    "email": "mark.pro@stratuscube.com",
+    "namespace": ""
+  }
+}
