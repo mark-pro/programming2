@@ -14,23 +14,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String... args) {
         try(Scanner in = new Scanner(System.in)) {
-            System.out.printf("Enter in a numbaer from 0 -> %d\n{~}> ", Short.MAX_VALUE);
-            short n = in.nextShort();
+            System.out.printf("Enter in a numbaer from 0 -> %d\n{~}> ", Long.MAX_VALUE);
+            Long n = in.nextLong();
             if (-1 < n && n <= Long.MAX_VALUE)
-                fib(n).stream()
-                    .map(i -> String.format("%d ", i))
-                    .forEach(System.out::print);
+                new FibIterator(n).forEach(i -> System.out.println(i));
             else
                 System.out.print("Cannot generate the series from %d\n");
         }
-    }
-
-    private static ArrayList<Short> fib(short n) {
-        ArrayList<Short> f = new ArrayList<Short>();
-        if(n == 1)
-            f.add((short) 1);
-        else
-            for(short i = 0 , j = 1 , k = 0 ; i <= n ; k = i , i = j , j += k) f.add(i);
-        return f;
     }
 }
