@@ -1,38 +1,40 @@
+import java.math.BigInteger;
 import java.util.Iterator;
 
-public class FibIterator implements Iterable<Long> {
+public class FibIterator implements Iterable<BigInteger> {
 
-    private long stopNumber;
-    public FibIterator(long stopNumber) { this.stopNumber = stopNumber; }
+    private BigInteger stopNumber;
+    public FibIterator(BigInteger stopNumber) { this.stopNumber = stopNumber; }
 
     @Override
-    public Iterator<Long> iterator() {
-      return new Iterator<Long>() {
+    public Iterator<BigInteger> iterator() {
+      return new Iterator<BigInteger>() {
             
-            private long lastNumber = 0;
-            private long currentNumber = 1;
+            private BigInteger lastNumber = BigInteger.valueOf(Integer.valueOf(0));
+            private BigInteger currentNumber = BigInteger.valueOf(Integer.valueOf(1));
 
             @Override
             public boolean hasNext() {
-                return this.lastNumber <= stopNumber && this.currentNumber > 0;
+                return (this.lastNumber.compareTo(stopNumber) == -1 || this.lastNumber.compareTo(stopNumber) == 0) && 
+                    this.currentNumber.compareTo(BigInteger.valueOf(Integer.valueOf(0))) == 1;
             }
 
             @Override
-            public Long next() {
-                if(stopNumber == 1) {
-                    this.lastNumber = 2;
-                    return (long) stopNumber;
+            public BigInteger next() {
+                if(stopNumber.compareTo(BigInteger.valueOf(Integer.valueOf(1))) == 0) {
+                    this.lastNumber = BigInteger.valueOf(Integer.valueOf(2));
+                    return (BigInteger) stopNumber;
                 }
 
-                long temp = this.currentNumber;
-                long lastTemp = this.lastNumber;
+                BigInteger temp = this.currentNumber;
+                BigInteger lastTemp = this.lastNumber;
                 this.currentNumber = this.getNextNumber();
                 this.lastNumber = temp;
                 return lastTemp;
             }
             
-            private long getNextNumber() {
-                return this.lastNumber + this.currentNumber;
+            private BigInteger getNextNumber() {
+                return this.lastNumber.add(this.currentNumber);
             }
 
             @Override

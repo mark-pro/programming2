@@ -1,5 +1,8 @@
-import java.util.ArrayList;
-import java.util.Collection;
+import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -14,12 +17,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String... args) {
         try(Scanner in = new Scanner(System.in)) {
-            System.out.printf("Enter in a numbaer from 0 -> %d\n{~}> ", Long.MAX_VALUE);
-            Long n = in.nextLong();
-            if (-1 < n && n <= Long.MAX_VALUE)
-                new FibIterator(n).forEach(i -> System.out.println(i));
-            else
-                System.out.print("Cannot generate the series from %d\n");
+            BigInteger max =  BigInteger.valueOf(Integer.valueOf(2)).pow(Short.MAX_VALUE + (Short.MAX_VALUE / 2));
+            NumberFormat formatter = new DecimalFormat("0.##E0", DecimalFormatSymbols.getInstance(Locale.ROOT));
+            System.out.printf("Enter in a numbaer from 0 -> %s\n{~}> ",  formatter.format(max));
+            BigInteger n = in.nextBigInteger();
+            //if (-1 < n && n <= Long.MAX_VALUE)
+                new FibIterator(n).forEach(i -> System.out.printf("%s\n", isLessThan10k(i) ? String.format("%d ", i) : formatter.format(i)));
+            // else
+            //     System.out.print("Cannot generate the series from %d\n");
         }
+
+    }
+    private static boolean isLessThan10k(BigInteger i) {
+        return BigInteger.valueOf(Integer.valueOf(10000)).compareTo(i) == 1;
     }
 }
