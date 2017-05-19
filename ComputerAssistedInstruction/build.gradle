@@ -10,7 +10,7 @@ buildscript {
 
 apply plugin: "java"
 apply plugin: "application"
-apply plugin: "checkstyle"
+//apply plugin: "checkstyle"
 apply plugin: "console"
 
 repositories {
@@ -22,3 +22,9 @@ dependencies {
 }
 
 mainClassName = "Main"
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
