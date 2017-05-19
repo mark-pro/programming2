@@ -2,7 +2,8 @@ import java.util.EnumMap;
 import java.util.Random;
 import java.util.function.BiFunction;
 import java.math.BigDecimal;
-import java.math.RoundingMode;;
+import java.math.RoundingMode;
+import java.util.function.Supplier;
 
 class MathProblem {
     public enum Operation {
@@ -19,10 +20,18 @@ class MathProblem {
         this.op = Operation.values()[new Random().nextInt(4)];
         this.Initialize(x, y);
     }
-
     public MathProblem(double x, double y, Operation operation) {
         this.op = operation;
         this.Initialize(x, y);
+    }
+
+    public MathProblem(Supplier<Double> func) {
+        this.Initialize(func.get(), func.get());
+    }
+
+    public MathProblem(Supplier<Double> func, Operation operation) {
+        this.op = operation;
+        this.Initialize(func.get(), func.get());
     }
 
     public void Initialize(double x, double y) {
@@ -44,12 +53,10 @@ class MathProblem {
     public double getX() { return this.x; }
     public double getY() { return this.y; }
     public Operation getOperation() { return this.op; }
-
     public void setX(double x) { this.x = x; }
     public void setY(double y) { this.y = y; }
 
     public double getAnswer() { return funcMap.get(this.op).apply(this.x, this.y); };
-
     public String getQuestion() {
         String opString = op == Operation.ADD ? "plus" :
             op == Operation.SUBTRACT ? "minus" :

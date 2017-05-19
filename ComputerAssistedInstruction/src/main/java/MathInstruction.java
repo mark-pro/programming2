@@ -1,6 +1,11 @@
 import java.security.SecureRandom;
 import java.util.Random;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+
+import groovy.lang.MetaArrayLengthProperty;
 
 class MathInstruction {
     public enum GoodResponses {
@@ -12,66 +17,50 @@ class MathInstruction {
     public enum Mode {
         EASY, MEDIUM, HARD
     }
-    
-    SecureRandom sr = new SecureRandom();
-
+    private SecureRandom sr = new SecureRandom();
+    private Supplier<Double> getLowNumber = () -> (double) sr.nextInt(9) + 1;
+    private Supplier<Double> getHighNumber = () -> (double) sr.nextInt(100) + 1;
+    private MathProblem setUpMathProblem(Mode mode, MathProblem.Operation operation) {
+        MathProblem p = null;
+        boolean hasOperation = operation != null;
+        switch (mode) {
+            case HARD:
+                p = hasOperation ? 
+                    new MathProblem(this.getHighNumber, operation) : 
+                    new MathProblem(this.getHighNumber);
+                break;                    
+            case MEDIUM:
+                p = hasOperation ? 
+                    new MathProblem(this.getHighNumber, operation) :
+                    new MathProblem(this.getHighNumber);
+                p = this.setupForDivision(p, this.getHighNumber);
+                break;
+            case EASY:
+                p = hasOperation ? 
+                    new MathProblem(this.getLowNumber, operation) : 
+                    new MathProblem(this.getLowNumber);
+                p = this.setupForDivision(p, this.getLowNumber);
+                break;
+        }
+        return p;
+    }
     public MathProblem generateProblem(Mode mode) {
-        MathProblem p = 
-            new MathProblem((double) sr.nextInt(9) + 1, (double) sr.nextInt(9) + 1);
-        switch (mode) {
-            case HARD:
-                p = new MathProblem(
-                    (double) sr.nextInt(100) + 1, (double) sr.nextInt(100) + 1);
-                break;                    
-            case MEDIUM:
-                p = new MathProblem(
-                    (double) sr.nextInt(100) + 1, (double) sr.nextInt(100) + 1);
-                p = setupForDivision(p, () -> sr.nextInt(100));
-                break;
-            case EASY:
-                p = this.setupForDivision(p, () -> sr.nextInt(9) + 1);
-                break;
-            default:
-                break;
-        }
-        return p;
+        return this.setUpMathProblem(mode, null);
     }
-
     public MathProblem generateProblem(Mode mode, MathProblem.Operation operation) {
-        MathProblem p = 
-            new MathProblem((double) sr.nextInt(9) + 1, (double) sr.nextInt(9) + 1, operation);
-        switch (mode) {
-            case HARD:
-                p = new MathProblem(
-                    (double) sr.nextInt(100) + 1, (double) sr.nextInt(100) + 1, operation);
-                break;                    
-            case MEDIUM:
-                p = new MathProblem(
-                    (double) sr.nextInt(100) + 1, (double) sr.nextInt(100) + 1, operation);
-                p = setupForDivision(p, () -> sr.nextInt(100));
-                break;
-            case EASY:
-                p = this.setupForDivision(p, () -> sr.nextInt(9) + 1);
-                break;
-            default:
-                break;
-        }
-        return p;
+        return this.setUpMathProblem(mode, operation);
     }
-
-    private MathProblem setupForDivision(MathProblem problem, Supplier<Integer> func) {
+    private MathProblem setupForDivision(MathProblem problem, Supplier<Double> func) {
         while (problem.getOperation() == MathProblem.Operation.DIVIDE && 
             problem.getX() % problem.getY() != 0) {
-            problem.setX((double) func.get());
-            problem.setY((double) func.get());
+            problem.setX(func.get());
+            problem.setY(func.get());
         }
         return problem;
     }
-
     public static boolean checkAnswer(double answer, MathProblem problem) {
         return answer == problem.getAnswer();
     }
-
     public static String getGoodResponse() {
         int result = new Random().nextInt(4);
         GoodResponses goodResponse = GoodResponses.values()[result];
@@ -83,7 +72,6 @@ class MathInstruction {
         }        
         return null;
     }
-
     public static String getBadResponse() {
         int result = new Random().nextInt(4);
         BadResponses badResponse = BadResponses.values()[result];
