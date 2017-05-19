@@ -18,7 +18,7 @@ public class Main {
     public static void run() {
         do {
             MathInstruction mi = new MathInstruction();
-            MathProblem p = mi.generateProblem();
+            MathProblem p = mi.generateProblem(MathInstruction.Mode.EASY);
             System.out.println(p.getQuestion());
             while (!MathInstruction.checkAnswer(promptForAnswer(), p))
                 System.out.println(MathInstruction.getBadResponse());

@@ -1,6 +1,6 @@
 import java.util.EnumMap;
 import java.util.Random;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
 import java.math.BigDecimal;
 import java.math.RoundingMode;;
 
@@ -9,7 +9,7 @@ class MathProblem {
         ADD, SUBTRACT, MULTIPLY, DIVIDE
     }
 
-    private EnumMap<Operation, Supplier<Double>> funcMap;
+    private EnumMap<Operation, BiFunction<Double, Double, Double>> funcMap;
 
     double x;
     double y;
@@ -20,10 +20,10 @@ class MathProblem {
         this.x = x;
         this.y = y;
         this.op = Operation.values()[new Random().nextInt(4)];
-        funcMap.put(Operation.ADD, () -> (double) (x + y));
-        funcMap.put(Operation.SUBTRACT, () -> (double) (x - y));
-        funcMap.put(Operation.MULTIPLY, () -> (double) (x * y));
-        funcMap.put(Operation.DIVIDE, () -> (double) round((x / y), 2));
+        funcMap.put(Operation.ADD, (a, b) -> (double) (a + b));
+        funcMap.put(Operation.SUBTRACT, (a, b) -> (double) (a - b));
+        funcMap.put(Operation.MULTIPLY, (a, b) -> (double) (a * b));
+        funcMap.put(Operation.DIVIDE, (a, b) -> (double) round((a / b), 2));
     }
 
     public static double round(double value, int places) {
@@ -34,10 +34,15 @@ class MathProblem {
     }
     public double getX() { return this.x; }
     public double getY() { return this.y; }
-    public double getAnswer() { return funcMap.get(this.op).get(); };
+    public Operation getOperation() { return this.op; }
+
+    public void setX(double x) { this.x = x; }
+    public void setY(double y) { this.y = y; }
+
+    public double getAnswer() { return funcMap.get(this.op).apply(this.x, this.y); };
 
     public String getQuestion() {
-        String opString = op == Operation.ADD ? "add" :
+        String opString = op == Operation.ADD ? "plus" :
             op == Operation.SUBTRACT ? "minus" :
             op == Operation.MULTIPLY ? "times" :
             "divided by";
