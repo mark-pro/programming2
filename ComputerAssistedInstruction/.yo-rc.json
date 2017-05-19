@@ -1,0 +1,9 @@
+{
+  "generator-java": {
+    "title": "Computer Assisted Instruction",
+    "description": "Create a program that will help teach kids how to do basic math.",
+    "author": "Mark Pro",
+    "email": "mark.pro@stratuscube.com",
+    "namespace": ""
+  }
+}
