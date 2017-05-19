@@ -1,11 +1,6 @@
 import java.security.SecureRandom;
 import java.util.Random;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
-
-import groovy.lang.MetaArrayLengthProperty;
 
 class MathInstruction {
     public enum GoodResponses {
@@ -18,45 +13,39 @@ class MathInstruction {
         EASY, MEDIUM, HARD
     }
     private SecureRandom sr = new SecureRandom();
-    private Supplier<Double> getLowNumber = () -> (double) sr.nextInt(9) + 1;
-    private Supplier<Double> getHighNumber = () -> (double) sr.nextInt(100) + 1;
-    private MathProblem setUpMathProblem(Mode mode, MathProblem.Operation operation) {
+    private MathProblem generateMathProblem(Mode mode, MathProblem.Operation operation) {
+        Supplier<Double> getLowNumber = () -> (double) sr.nextInt(9) + 1;
+        Supplier<Double> getHighNumber = () -> (double) sr.nextInt(100) + 1;
         MathProblem p = null;
         boolean hasOperation = operation != null;
         switch (mode) {
             case HARD:
                 p = hasOperation ? 
-                    new MathProblem(this.getHighNumber, operation) : 
-                    new MathProblem(this.getHighNumber);
+                    new MathProblem(getHighNumber, operation) : 
+                    new MathProblem(getHighNumber);
                 break;                    
             case MEDIUM:
                 p = hasOperation ? 
-                    new MathProblem(this.getHighNumber, operation) :
-                    new MathProblem(this.getHighNumber);
-                p = this.setupForDivision(p, this.getHighNumber);
+                    new MathProblem(getHighNumber, operation)
+                        .setupForDivision(getHighNumber) :
+                    new MathProblem(getHighNumber)
+                        .setupForDivision(getHighNumber);
                 break;
             case EASY:
                 p = hasOperation ? 
-                    new MathProblem(this.getLowNumber, operation) : 
-                    new MathProblem(this.getLowNumber);
-                p = this.setupForDivision(p, this.getLowNumber);
+                    new MathProblem(getLowNumber, operation)
+                        .setupForDivision(getLowNumber) : 
+                    new MathProblem(getLowNumber)
+                        .setupForDivision(getLowNumber);
                 break;
         }
         return p;
     }
     public MathProblem generateProblem(Mode mode) {
-        return this.setUpMathProblem(mode, null);
+        return this.generateMathProblem(mode, null);
     }
     public MathProblem generateProblem(Mode mode, MathProblem.Operation operation) {
-        return this.setUpMathProblem(mode, operation);
-    }
-    private MathProblem setupForDivision(MathProblem problem, Supplier<Double> func) {
-        while (problem.getOperation() == MathProblem.Operation.DIVIDE && 
-            problem.getX() % problem.getY() != 0) {
-            problem.setX(func.get());
-            problem.setY(func.get());
-        }
-        return problem;
+        return this.generateMathProblem(mode, operation);
     }
     public static boolean checkAnswer(double answer, MathProblem problem) {
         return answer == problem.getAnswer();
