@@ -11,10 +11,10 @@ class MathInstruction {
     }
 
     public MathProblem generateProblem() {
-        return new MathProblem(sr.nextInt(9) + 1, sr.nextInt(9) + 1);
+        return new MathProblem((double) sr.nextInt(9) + 1, (double) sr.nextInt(9) + 1);
     }
 
-    public boolean checkAnswer(int answer, MathProblem problem) {
+    public static boolean checkAnswer(double answer, MathProblem problem) {
         return answer == problem.getAnswer();
     }
 

@@ -16,19 +16,19 @@ public class Main {
     }
 
     public static void run() {
-        MathInstruction mi = new MathInstruction();
         do {
+            MathInstruction mi = new MathInstruction();
             MathProblem p = mi.generateProblem();
             System.out.println(p);
-            while (p.getAnswer() != promptForAnswer())
+            while (!MathInstruction.checkAnswer(promptForAnswer(), p))
                 System.out.println(MathInstruction.getBadResponse());
             System.out.println(MathInstruction.getGoodResponse());
         } while(true);
     }
 
-    public static int promptForAnswer() {
+    public static Double promptForAnswer() {
         System.out.print("{~}> ");
-        int result = in.nextInt();
+        Double result = in.nextDouble();
         return result;
     }
 }
