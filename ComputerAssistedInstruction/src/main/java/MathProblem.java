@@ -36,12 +36,13 @@ class MathProblem {
     public double getY() { return this.y; }
     public double getAnswer() { return funcMap.get(this.op).get(); };
 
-    @Override
-    public String toString() {
+    public String getQuestion() {
         String opString = op == Operation.ADD ? "add" :
             op == Operation.SUBTRACT ? "minus" :
             op == Operation.MULTIPLY ? "times" :
             "divided by";
-        return String.format("How much is %d %s %d? (round to two deimal places if needed) ex: 0.56", (int) this.x, opString, (int) this.y);
+        return String.format(
+                "How much is %d %s %d? (round to two deimal places if needed) ex: 0.56", 
+            (int) this.x, opString, (int) this.y);
     }
 }

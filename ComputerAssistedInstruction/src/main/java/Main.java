@@ -19,7 +19,7 @@ public class Main {
         do {
             MathInstruction mi = new MathInstruction();
             MathProblem p = mi.generateProblem();
-            System.out.println(p);
+            System.out.println(p.getQuestion());
             while (!MathInstruction.checkAnswer(promptForAnswer(), p))
                 System.out.println(MathInstruction.getBadResponse());
             System.out.println(MathInstruction.getGoodResponse());
