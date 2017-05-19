@@ -16,10 +16,19 @@ class MathProblem {
     Operation op;
 
     public MathProblem(double x, double y) {
+        this.op = Operation.values()[new Random().nextInt(4)];
+        this.Initialize(x, y);
+    }
+
+    public MathProblem(double x, double y, Operation operation) {
+        this.op = operation;
+        this.Initialize(x, y);
+    }
+
+    public void Initialize(double x, double y) {
         funcMap = new EnumMap<>(Operation.class);
         this.x = x;
         this.y = y;
-        this.op = Operation.values()[new Random().nextInt(4)];
         funcMap.put(Operation.ADD, (a, b) -> (double) (a + b));
         funcMap.put(Operation.SUBTRACT, (a, b) -> (double) (a - b));
         funcMap.put(Operation.MULTIPLY, (a, b) -> (double) (a * b));

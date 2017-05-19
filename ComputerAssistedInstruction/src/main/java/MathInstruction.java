@@ -4,10 +4,10 @@ import java.util.function.Supplier;
 
 class MathInstruction {
     public enum GoodResponses {
-        VeryGood , Excellent , NiceWork , GoodWork;
+        VERY_GOOD , EXCELLENT , NICE_WORK , GOOD_WORK;
     }
     public enum BadResponses {
-        TryAgain, TryOnceMore, DontGiveUp, KeepTrying
+        TRY_AGAIN, TRY_ONCE_MORE, DONT_GIVE_UP, KEEP_TRYING
     }
     public enum Mode {
         EASY, MEDIUM, HARD
@@ -37,6 +37,28 @@ class MathInstruction {
         return p;
     }
 
+    public MathProblem generateProblem(Mode mode, MathProblem.Operation operation) {
+        MathProblem p = 
+            new MathProblem((double) sr.nextInt(9) + 1, (double) sr.nextInt(9) + 1, operation);
+        switch (mode) {
+            case HARD:
+                p = new MathProblem(
+                    (double) sr.nextInt(100) + 1, (double) sr.nextInt(100) + 1, operation);
+                break;                    
+            case MEDIUM:
+                p = new MathProblem(
+                    (double) sr.nextInt(100) + 1, (double) sr.nextInt(100) + 1, operation);
+                p = setupForDivision(p, () -> sr.nextInt(100));
+                break;
+            case EASY:
+                p = this.setupForDivision(p, () -> sr.nextInt(9) + 1);
+                break;
+            default:
+                break;
+        }
+        return p;
+    }
+
     private MathProblem setupForDivision(MathProblem problem, Supplier<Integer> func) {
         while (problem.getOperation() == MathProblem.Operation.DIVIDE && 
             problem.getX() % problem.getY() != 0) {
@@ -54,10 +76,10 @@ class MathInstruction {
         int result = new Random().nextInt(4);
         GoodResponses goodResponse = GoodResponses.values()[result];
         switch (goodResponse) {
-            case VeryGood: return "Very Good!";
-            case Excellent: return "Excellent!";
-            case NiceWork: return "Nice Work!";
-            case GoodWork: return "Keep up the good work!";
+            case VERY_GOOD: return "Very Good!";
+            case EXCELLENT: return "Excellent!";
+            case NICE_WORK: return "Nice Work!";
+            case GOOD_WORK: return "Keep up the good work!";
         }        
         return null;
     }
@@ -66,10 +88,10 @@ class MathInstruction {
         int result = new Random().nextInt(4);
         BadResponses badResponse = BadResponses.values()[result];
         switch (badResponse) {
-            case TryAgain: return "No, please try again";
-            case TryOnceMore: return "Wrong. Try once more.";
-            case DontGiveUp: return "Don't give up!'";
-            case KeepTrying: return "No. Keep trying";
+            case TRY_AGAIN: return "No, please try again";
+            case TRY_ONCE_MORE: return "Wrong. Try once more.";
+            case DONT_GIVE_UP: return "Don't give up!'";
+            case KEEP_TRYING: return "No. Keep trying";
         }        
         return null;
     }
