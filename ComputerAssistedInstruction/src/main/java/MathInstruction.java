@@ -1,7 +1,8 @@
+import java.security.SecureRandom;
 import java.util.Random;
 
 class MathInstruction {
-    Random r = new Random();
+    SecureRandom sr = new SecureRandom();
     public enum GoodResponses {
         VeryGood , Excellent , NiceWork , GoodWork;
     }
@@ -10,7 +11,7 @@ class MathInstruction {
     }
 
     public MathProblem generateProblem() {
-        return new MathProblem(r.nextInt(9) + 1, r.nextInt(9) + 1);
+        return new MathProblem(sr.nextInt(9) + 1, sr.nextInt(9) + 1);
     }
 
     public boolean checkAnswer(int answer, MathProblem problem) {
