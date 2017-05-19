@@ -2,7 +2,7 @@ import java.security.SecureRandom;
 import java.util.Random;
 import java.util.function.Supplier;
 
-class MathInstruction {
+class MathProblemHelper {
     public enum GoodResponses {
         VERY_GOOD , EXCELLENT , NICE_WORK , GOOD_WORK;
     }

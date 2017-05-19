@@ -27,13 +27,13 @@ public class Main {
             MathProblem.Operation o = operation != 4 ? 
                 MathProblem.Operation.values()[operation] : 
                 MathProblem.Operation.values()[new Random().nextInt(4)];
-            MathInstruction.Mode m = MathInstruction.Mode.values()[mode];
-            MathInstruction mi = new MathInstruction();
+            MathProblemHelper.Mode m = MathProblemHelper.Mode.values()[mode];
+            MathProblemHelper mi = new MathProblemHelper();
             MathProblem p = mi.generateProblem(m, o);
             System.out.println(p.getQuestion());
-            while (!MathInstruction.checkAnswer(promptForAnswer(), p))
-                System.out.println(MathInstruction.getBadResponse());
-            System.out.println(MathInstruction.getGoodResponse());
+            while (!MathProblemHelper.checkAnswer(promptForAnswer(), p))
+                System.out.println(MathProblemHelper.getBadResponse());
+            System.out.println(MathProblemHelper.getGoodResponse());
         } while(true);
     }
     public static int getOption(String option, String[] options) {

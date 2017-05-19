@@ -24,6 +24,7 @@ class MathProblem {
         this.Initialize(x, y);
     }
     public MathProblem(Supplier<Double> func) {
+        this.op = Operation.values()[new Random().nextInt(4)];
         this.Initialize(func.get(), func.get());
     }
     public MathProblem(Supplier<Double> func, Operation operation) {
