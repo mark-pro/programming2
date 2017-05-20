@@ -12,7 +12,7 @@ import java.util.Random;
  * @version 1.0.0
  */
 public class Main {
-    static Scanner in = new Scanner(System.in);
+    private static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
         if(args.length > 0 && args[0].equalsIgnoreCase("advanced"))
             run(
