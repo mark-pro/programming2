@@ -1,11 +1,9 @@
 import java.util.EnumMap;
-import java.util.Random;
+import java.security.SecureRandom;
 import java.util.function.BiFunction;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.function.Supplier;
-import java.lang.*;
-import java.lang.reflect.*;
 
 class MathProblem {
     public enum Operation {
@@ -18,7 +16,7 @@ class MathProblem {
     private Operation op;
 
     public MathProblem(double x, double y) {
-        this.op = Operation.values()[new Random().nextInt(4)];
+        this.op = Operation.values()[new SecureRandom().nextInt(4)];
         this.Initialize(x, y);
     }
     public MathProblem(double x, double y, Operation operation) {
@@ -26,7 +24,7 @@ class MathProblem {
         this.Initialize(x, y);
     }
     public MathProblem(Supplier<Double> func) {
-        this.op = Operation.values()[new Random().nextInt(4)];
+        this.op = Operation.values()[new SecureRandom().nextInt(4)];
         this.Initialize(func.get(), func.get());
     }
     public MathProblem(Supplier<Double> func, Operation operation) {
