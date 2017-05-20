@@ -4,6 +4,8 @@ import java.util.function.BiFunction;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.function.Supplier;
+import java.lang.*;
+import java.lang.reflect.*;
 
 class MathProblem {
     public enum Operation {
@@ -63,9 +65,9 @@ class MathProblem {
     }
     public MathProblem setupForDivision(Supplier<Double> func) {
         while (this.getOperation() == MathProblem.Operation.DIVIDE && 
-            this.getX() % this.getY() != 0) {
-            this.setX(func.get());
-            this.setY(func.get());
+            this.x % this.y != 0) {
+            this.x = func.get();
+            this.y = func.get();
         }
         return this;
     }
