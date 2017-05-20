@@ -58,8 +58,11 @@ class MathProblem {
             op == Operation.MULTIPLY ? "times" :
             "divided by";
         return String.format(
-                "How much is %d %s %d? (round to two deimal places if needed) ex: 0.56", 
-            (int) this.x, opString, (int) this.y);
+                "How much is %d %s %s %d?", 
+            (int) this.x, opString, 
+            this.op == Operation.DIVIDE ? 
+                "(round to two deimal places if needed) ex: 0.56" : "", 
+            (int) this.y);
     }
     public MathProblem setupForDivision(Supplier<Double> func) {
         while (this.getOperation() == MathProblem.Operation.DIVIDE && 
