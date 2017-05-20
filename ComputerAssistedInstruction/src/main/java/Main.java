@@ -37,7 +37,7 @@ public class Main {
         } while(true);
     }
     public static int getOption(String option, String[] options) {
-        System.out.printf("What %s would you like? (select a number 1 - %d\n", option, options.length);
+        System.out.printf("What %s would you like? (select a number 1 - %d)\n", option, options.length);
         for(int i = 0; i < options.length; i++)
             System.out.printf("%d. %s\n", i + 1, options[i]);
         System.out.print("{~}> ");
