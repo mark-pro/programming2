@@ -35,7 +35,7 @@ A separate method should be used to generate each new question. This method shou
 **Hint:** Use random-number generation to choose a number from 1 to 4 that will be used to select one of the four appropriate responses to each correct or incorrect answer. Use a switch statement to issue the responses.
 
 ## Output
-![output](output.png)
+![output](output.PNG)
 
 ## Requirements
 
