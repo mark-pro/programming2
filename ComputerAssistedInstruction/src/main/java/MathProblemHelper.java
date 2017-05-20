@@ -1,5 +1,4 @@
 import java.security.SecureRandom;
-import java.util.Random;
 import java.util.function.Supplier;
 
 class MathProblemHelper {
@@ -51,7 +50,7 @@ class MathProblemHelper {
         return answer == problem.getAnswer();
     }
     public static String getGoodResponse() {
-        int result = new Random().nextInt(4);
+        int result = new SecureRandom().nextInt(4);
         GoodResponses goodResponse = GoodResponses.values()[result];
         switch (goodResponse) {
             case VERY_GOOD: return "Very Good!";
@@ -62,7 +61,7 @@ class MathProblemHelper {
         return null;
     }
     public static String getBadResponse() {
-        int result = new Random().nextInt(4);
+        int result = new SecureRandom().nextInt(4);
         BadResponses badResponse = BadResponses.values()[result];
         switch (badResponse) {
             case TRY_AGAIN: return "No, please try again";

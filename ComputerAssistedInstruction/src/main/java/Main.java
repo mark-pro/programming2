@@ -1,10 +1,10 @@
 import java.util.Scanner;
+import java.util.Random;
 
 /**
  * Copyright (C) 2017 Mark Pro.
  */
 
-import java.util.Random;
 
 /**
  * Main class.
