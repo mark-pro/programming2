@@ -9,12 +9,10 @@ class MathProblem {
     public enum Operation {
         ADD, SUBTRACT, MULTIPLY, DIVIDE
     }
-
     private EnumMap<Operation, BiFunction<Double, Double, Double>> funcMap;
     private double x;
     private double y;
     private Operation op;
-
     public MathProblem(double x, double y) {
         this.op = Operation.values()[new SecureRandom().nextInt(4)];
         this.Initialize(x, y);
