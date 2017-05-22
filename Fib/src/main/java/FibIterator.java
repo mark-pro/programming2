@@ -23,7 +23,7 @@ public class FibIterator implements Iterable<BigInteger> {
             public BigInteger next() {
                 if(stopNumber.compareTo(BigInteger.valueOf(Integer.valueOf(1))) == 0) {
                     this.lastNumber = BigInteger.valueOf(Integer.valueOf(2));
-                    return (BigInteger) stopNumber;
+                    return stopNumber;
                 }
 
                 BigInteger temp = this.currentNumber;
