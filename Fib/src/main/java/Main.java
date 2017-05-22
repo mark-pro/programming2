@@ -19,7 +19,7 @@ public class Main {
         try(Scanner in = new Scanner(System.in)) {
             BigInteger max =  BigInteger.valueOf(Integer.valueOf(2)).pow(Short.MAX_VALUE + (Short.MAX_VALUE / 2));
             NumberFormat formatter = new DecimalFormat("0.##E0", DecimalFormatSymbols.getInstance(Locale.ROOT));
-            System.out.printf("Enter in a numbaer from 0 -> %s\n{~}> ",  formatter.format(max));
+            System.out.printf("Enter in a numbaer from 0 -> %s\n{~}> ", formatter.format(max));
             BigInteger n = in.nextBigInteger();
             //if (-1 < n && n <= Long.MAX_VALUE)
                 new FibIterator(n).forEach(i -> System.out.printf("%s\n", isLessThan10k(i) ? String.format("%d ", i) : formatter.format(i)));
