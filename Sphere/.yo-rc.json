@@ -1,0 +1,9 @@
+{
+  "generator-java": {
+    "title": "Sphere",
+    "description": "Finding the volume of a sphere",
+    "author": "Mark Pro",
+    "email": "mark.pro@stratuscube.com",
+    "namespace": ""
+  }
+}
