@@ -18,13 +18,8 @@ public class Main {
         try(Scanner input = new Scanner(System.in)) {
             System.out.print("Enter in 9 numbers with spaces between them\n{~}>");
             String numbers = input.nextLine();
-            int[][] nxn = MatrixHelper.createMatrix(numbers);
-            for(int i = 0 ; i < nxn.length; i++) {
-                for(int j = 0; j < nxn[0].length; j++)
-                    System.out.printf("%d ", nxn[i][j]);
-
-                System.out.println();
-            }
+            MagicSquare m = MagicSquareFactory.createMatrix(numbers);
+            System.out.println(m);
         }
     }
 }
