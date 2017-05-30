@@ -1,0 +1,9 @@
+{
+  "generator-java": {
+    "title": "Magic Square",
+    "description": "Making a magic square? Whate ever that is...",
+    "author": "Mark Pro",
+    "email": "mark.pro@stratuscube.com",
+    "namespace": ""
+  }
+}
