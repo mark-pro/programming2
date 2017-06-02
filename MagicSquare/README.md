@@ -44,7 +44,9 @@ Note:
 
 We will need to upload on Canvas both your code and a snapshot of the execution of your program in a zipped folder by Friday, June 2nd 2017 @ 11:59 pm. Late submission will not be accepted.
 
-Ru
+## Output
+
+![output](output.PNG)
 
 ## Requirements
 

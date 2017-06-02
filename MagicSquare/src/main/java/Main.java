@@ -16,10 +16,17 @@ public class Main {
 
     private static void Run() {
         try(Scanner input = new Scanner(System.in)) {
-            System.out.print("Enter in 9 numbers with spaces between them\n{~}>");
-            String numbers = input.nextLine();
-            MagicSquare m = MagicSquareFactory.createMatrix(numbers);
-            System.out.println(m);
+            while(true) {
+                System.out.print("\nEnter in an NxN square of numbers with spaces between them\n//.ex. 9 numbers produces a 3x3 square\n\n{~}> ");
+                String numbers = input.nextLine();
+                MagicSquare m = MagicSquareFactory.createMatrix(numbers);
+                System.out.println("The square is ->\n");
+                System.out.printf("%s\n\n", m);
+                if(m.isMagicSquare())
+                    System.out.println("This is a magic square!");
+                else
+                    System.out.println("This is NOT a magic square");
+            }
         }
     }
 }
