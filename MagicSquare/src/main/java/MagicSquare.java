@@ -40,7 +40,7 @@ public class MagicSquare {
         // Sum cols
         sum((r , c) -> {
             sums[r + nxn.length] += nxn[c][r];
-            if(c == nxn.length - 1 && r < nxn[c].length) { r = 1; c = 0 - nxn.length + 1; }
+            if(c == nxn.length - 1 && r < nxn.length) { r = 1; c = 0 - nxn.length + 1; }
             else { r = 0; c = 1; }
             return new int[] {r, c};
         });
