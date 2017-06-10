@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -56,6 +57,8 @@ public class TypingTutor {
 		lblNoteClickingThe.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setLineWrap(true);
+		textArea.setWrapStyleWord(true);
 		textArea.setBounds(10, 58, 695, 193);
 		ArrayList<JKeyboardButton> btns = new ArrayList<JKeyboardButton>();
 		btns.add(new JKeyboardButton("`", 192));
@@ -103,8 +106,11 @@ public class TypingTutor {
 		btns.add(new JKeyboardButton(","));
 		btns.add(new JKeyboardButton("."));
 		btns.add(new JKeyboardButton("?", 47));
-		btns.add(new JKeyboardButton("", 32, JKeyboardButton.Size.SPACE));
-		
+		btns.add(new JKeyboardButton("^", 38));
+		btns.add(new JKeyboardButton(" ", 32, JKeyboardButton.Size.SPACE));
+		btns.add(new JKeyboardButton("<", 37));
+		btns.add(new JKeyboardButton("v", 40));
+		btns.add(new JKeyboardButton(">", 39));
 		
 		frmTypingTutor.getContentPane().setLayout(null);
 		frmTypingTutor.getContentPane().add(textArea);
@@ -113,13 +119,30 @@ public class TypingTutor {
 		
 		int currentX = 10;
 		int currentY = 258;
+		JKeyboardButton referenceBtn = new JKeyboardButton(" ");
+		referenceBtn.setBounds(0, 0, 0, 0);
 		for (JKeyboardButton b : btns) {
 			if(currentX + b.getButtonSize().getValue() > frmTypingTutor.getBounds().width) {
 				currentX = 10;
 				currentY += 36;
 			}
-			b.setBounds(currentX, currentY, b.getButtonSize().getValue(), 36);
+			
+			if(b.getText() == "^") {
+				b.setBounds(currentX + b.getButtonSize().getValue(), currentY, b.getButtonSize().getValue(), 36);
+				referenceBtn = b;
+			}
+			else if(b.getText() == "<") {
+				Rectangle r = referenceBtn.getBounds();
+				b.setBounds((int) r.getX() - b.getButtonSize().getValue(), currentY, b.getButtonSize().getValue(), 36);
+			}
+			else if(b.getText() == " ") { 
+				Rectangle r = referenceBtn.getBounds();
+				b.setBounds((int) r.getWidth() * 4, currentY, b.getButtonSize().getValue(), 36);
+			}
+			else
+				b.setBounds(currentX, currentY, b.getButtonSize().getValue(), 36);
 			currentX = b.getBounds().x + b.getButtonSize().getValue();
+			
 			b.addActionListener(new ActionListener() {
 				
 				@Override
@@ -135,7 +158,7 @@ public class TypingTutor {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
+			
 			}
 			
 			private void changeColor(KeyEvent e, boolean isPressed) {
