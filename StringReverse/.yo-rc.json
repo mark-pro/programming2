@@ -1,0 +1,9 @@
+{
+  "generator-java": {
+    "title": "String Reverse",
+    "description": "Reversing a string",
+    "author": "Mark Pro",
+    "email": "mark.pro@stratuscube.com",
+    "namespace": ""
+  }
+}
